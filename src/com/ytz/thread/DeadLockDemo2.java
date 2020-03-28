@@ -1,6 +1,4 @@
-package com.ytz.juc;
-
-import com.sun.corba.se.spi.monitoring.MonitoredObject;
+package com.ytz.thread;
 
 /**
  * @ClassName: DeadLockDemo2

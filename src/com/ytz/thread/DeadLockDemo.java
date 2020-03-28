@@ -1,4 +1,4 @@
-package com.ytz.juc;
+package com.ytz.thread;
 
 /**
  * @ClassName: DeadLockDemo
