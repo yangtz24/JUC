@@ -1,4 +1,4 @@
-# JUC
+#   JUC
 
 ## 1. JUC简介
 
@@ -15,6 +15,8 @@
 ```java
 NEW、RUNNABLE、BLOCKED、WAITING、TIMED_WAITING、TERMINATED
 ```
+
+![](E:\juc\image\threadState.png)
 
 ## 4. Synchoronized关键字
 
