@@ -16,7 +16,7 @@
 NEW、RUNNABLE、BLOCKED、WAITING、TIMED_WAITING、TERMINATED
 ```
 
-![](E:\juc\image\threadState.png)
+![](image\threadState.png)
 
 ## 4. Synchoronized关键字
 
