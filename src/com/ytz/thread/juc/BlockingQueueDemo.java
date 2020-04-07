@@ -32,10 +32,6 @@ public class BlockingQueueDemo {
         // java.util.NoSuchElementException
 //        System.out.println(blockingQueue.remove());
 
-        Executors.newFixedThreadPool(int i);
-        Executors.newSingleThreadExecutor();
-        Executors.newCachedThreadPool()
-
     }
 
 

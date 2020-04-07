@@ -43,7 +43,7 @@ Executors.newFixedThreadPool(int i);//执行长期任务，有固定数的线程
 	public static ExecutorService newFixedThreadPool(int var0) {
 	        return new ThreadPoolExecutor(nThreads, nThreads, 0L, 					TimeUnit.MILLISECONDS, new LinkedBlockingQueue<Runnable>());
 	}
-Executors.newSingleThreadExecutor();//一个线程池一个线程
+Executors.newSingleThreadExecutor();//一个线程池一个线程。创建一个单线程的线程池，适用于需要保证顺序执行各个任务。
 	public static ExecutorService newSingleThreadExecutor(int var0) {
 	        return new ThreadPoolExecutor(1, 1, 0L, 					TimeUnit.MILLISECONDS, new LinkedBlockingQueue<Runnable>());
 	}
@@ -93,6 +93,14 @@ AbortPolicy:默认。直接抛出异常，阻止系统正常运行
 CallerRunsPolicy:“调用者运行”一种调节机制，该策略不会抛弃任务，也不抛出异常，将某些任务回退给调用者，从而降低新任务流量。
 DiscardOldestPolicy:抛弃队列中等待时间最久的任务，然后把当前任务加入到队列中再尝试提交。
 DiscardPolicy:丢弃无法处理的任务，不抛出异常也不做任何处理。如果允许任务丢失，可以使用此策略。
+```
+
+#### 12.6 如何配置线程池
+
+```te
+CPU密集型任务:尽量使用较小的线程池，一般为CPU核心数+1。
+IO密集型任务:可以使用稍大的线程池，一般为2*CPU核心数。
+混合型任务:可以将任务分成IO密集型和CPU密集型任务，然后分别用不同的线程池去处理。
 ```
 
 
