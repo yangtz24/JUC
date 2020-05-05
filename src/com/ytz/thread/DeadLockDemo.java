@@ -51,6 +51,7 @@ public class DeadLockDemo {
             public void run() {
                 synchronized (object1) {
                     try {
+                        System.out.println("t1 Lock");
                         Thread.sleep(500);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
@@ -66,6 +67,7 @@ public class DeadLockDemo {
             @Override
             public void run() {
                 synchronized (object2) {
+                    System.out.println("t2 Lock");
                     synchronized (object1) {
                         System.out.println("doSomething..........");
                     }
