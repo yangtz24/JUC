@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit;
 public class LiveLockDemo {
 
     static volatile int count = 10;
-    static final Object o = new Object();
+    static final Object O = new Object();
 
     public static void main(String[] args) {
         new Thread(() -> {
