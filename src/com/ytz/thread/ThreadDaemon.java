@@ -1,5 +1,4 @@
 package com.ytz.thread;
-
 /**
  * @ClassName: ThreadDaemon
  * @Description: 守护线程
