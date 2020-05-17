@@ -1,3 +1,6 @@
+package com.ytz.thread;
+
+
 import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.HashSet;
@@ -17,10 +20,26 @@ public class ThreadPoolDemo {
     public static final int LOOP = 5;
 
     public static void main(String[] args) {
-        ThreadPool threadPool = new ThreadPool(2, 1000, TimeUnit.MILLISECONDS, 10);
+        ThreadPool threadPool = new ThreadPool(2, 1000, TimeUnit.MILLISECONDS, 10, (queue, task) -> {
+            // 一直等待
+            //queue.put(task);
+            // 超时等待
+            //queue.offer(task, 500, TimeUnit.MILLISECONDS);
+            // 放弃
+            //System.out.println("放弃任务" + task);
+            // 抛出异常
+            //throw new RuntimeException("任务执行失败" + task);
+            // 调用者自己执行
+            task.run();
+        });
         for (int i = 0; i < LOOP; i++) {
             int j = i;
             threadPool.execute(() -> {
+                try {
+                    Thread.sleep(1000L);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 System.out.println(j);
             });
         }
@@ -55,6 +74,11 @@ class ThreadPool {
     private TimeUnit unit;
 
     /**
+     * 拒绝策略
+     */
+    private RejectPolicy<Runnable> rejectPolicy;
+
+    /**
      * 执行任务
      * @param task
      */
@@ -67,15 +91,18 @@ class ThreadPool {
                 worker.start();
             } else {
                 taskQueue.put(task);
+                // 等待、超时等待、放弃任务、抛出异常、执行任务
+                taskQueue.tryPut(rejectPolicy, task);
             }
         }
     }
 
-    public ThreadPool(int coreSize, long timeOut, TimeUnit unit, int queueCapcity) {
+    public ThreadPool(int coreSize, long timeOut, TimeUnit unit, int queueCapcity, RejectPolicy<Runnable> rejectPolicy) {
         this.coreSize = coreSize;
         this.timeOut = timeOut;
         this.unit = unit;
         this.taskQueue = new BlockingQueue<>(queueCapcity);
+        this.rejectPolicy = rejectPolicy;
     }
 
     class Worker extends Thread {
@@ -220,6 +247,36 @@ class BlockingQueue<T> {
     }
 
     /**
+     * 超时添加
+     * @param task 任务
+     * @param timeOut 超时时间
+     * @param unit 时间单位
+     * @return
+     */
+    public boolean offer(T task, long timeOut, TimeUnit unit) {
+        lock.lock();
+        try {
+            long nanos = unit.toNanos(timeOut);
+            while (queue.size() == capcity) {
+                try {
+                    if (nanos <= 0) {
+                        return false;
+                    }
+                    nanos = fullWaitSet.awaitNanos(nanos);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+            // 添加到队列
+            queue.addLast(task);
+            emptyWaitSet.signal();
+            return true;
+        } finally {
+            lock.unlock();
+        }
+    }
+
+    /**
      * 获取队列大小
      * @return
      */
@@ -231,4 +288,35 @@ class BlockingQueue<T> {
             lock.unlock();
         }
     }
+
+    public void tryPut(RejectPolicy<T> rejectPolicy, T task) {
+        lock.lock();
+        try {
+            // 判断队列是否已满
+            if (queue.size() == capcity) {
+                rejectPolicy.reject(this, task);
+            } else {
+                queue.addLast(task);
+                emptyWaitSet.signal();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            lock.unlock();
+        }
+    }
+}
+
+/**
+ * 拒绝策略
+ * @param <T>
+ */
+@FunctionalInterface
+interface RejectPolicy<T> {
+    /**
+     * 拒绝策略
+     * @param queue
+     * @param task
+     */
+    void reject(BlockingQueue<T> queue, T task);
 }
