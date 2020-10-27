@@ -3,13 +3,13 @@ package com.ytz.thread;
 /**
  * @ClassName: ThreadJoin
  * @Description: 线程加入
- *                  当一个线程必须等待另一个线程执行时，就用到 join。
- *                  // 当前线程加入该线程后面，等待该线程终止。
- *                      void join()
- *                  // 当前线程等待该线程终止的时间最长为 millis 毫秒。如果在millis时间内，该线程没有执行完，那么当前线程进入就绪状态，重新等待cpu调度
- *                      void join(long millis)
- *                  // 等待该线程终止的时间最长为 millis 毫秒 + nanos 纳秒。如果在millis时间内，该线程没有执行完，那么当前线程进入就绪状态，重新等待cpu调度
- *                      void join(long millis,int nanos)
+ * 当一个线程必须等待另一个线程执行时，就用到 join。
+ * // 当前线程加入该线程后面，等待该线程终止。
+ * void join()
+ * // 当前线程等待该线程终止的时间最长为 millis 毫秒。如果在millis时间内，该线程没有执行完，那么当前线程进入就绪状态，重新等待cpu调度
+ * void join(long millis)
+ * // 等待该线程终止的时间最长为 millis 毫秒 + nanos 纳秒。如果在millis时间内，该线程没有执行完，那么当前线程进入就绪状态，重新等待cpu调度
+ * void join(long millis,int nanos)
  * @author: yangtianzeng
  * @date: 2020/3/28 21:47
  */

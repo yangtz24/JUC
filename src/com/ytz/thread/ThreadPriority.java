@@ -3,10 +3,10 @@ package com.ytz.thread;
 /**
  * @ClassName: ThreadPriority
  * @Description: 线程优先级
- *                  Thread 类通过一个整型成员变量 priority 来控制优先级，优先级的范围从 1 ～ 10，默认优先级是 5。
- *                  public static final int MIN_PRIORITY = 1;
- *                  public static final int NORM_PRIORITY = 5;
- *                  public static final int MAX_PRIORITY = 10;
+ * Thread 类通过一个整型成员变量 priority 来控制优先级，优先级的范围从 1 ～ 10，默认优先级是 5。
+ * public static final int MIN_PRIORITY = 1;
+ * public static final int NORM_PRIORITY = 5;
+ * public static final int MAX_PRIORITY = 10;
  * @author: yangtianzeng
  * @date: 2020/3/28 20:19
  */

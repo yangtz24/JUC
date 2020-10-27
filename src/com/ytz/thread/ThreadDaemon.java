@@ -1,14 +1,15 @@
 package com.ytz.thread;
+
 /**
  * @ClassName: ThreadDaemon
  * @Description: 守护线程
- *                  Daemon 线程是一种支持型线程，在后台守护一些系统服务，比如 JVM 的垃圾回收、内存管理等线程都是守护线程。
- *                  与之对应的就是用户线程，用户线程就是系统的工作线程，它会完成整个系统的业务操作。
- *                  用户线程结束后就意味着整个系统的任务全部结束了，因此系统就没有对象需要守护的了，守护线程自然而然就会退出。
- *                  所以当一个 Java 应用只有守护线程的时候，虚拟机就会自然退出。
- *                  注意：
- *                      调用 setDaemon(boolean on)设置守护线程要在线程启动前，否则会抛出异常。java.lang.IllegalThreadStateException
- *                      守护线程在退出的时候并不会执行 finnaly 块中的代码，所以将释放资源等操作不要放在 finnaly 块中执行，这种操作是不安全的。
+ * Daemon 线程是一种支持型线程，在后台守护一些系统服务，比如 JVM 的垃圾回收、内存管理等线程都是守护线程。
+ * 与之对应的就是用户线程，用户线程就是系统的工作线程，它会完成整个系统的业务操作。
+ * 用户线程结束后就意味着整个系统的任务全部结束了，因此系统就没有对象需要守护的了，守护线程自然而然就会退出。
+ * 所以当一个 Java 应用只有守护线程的时候，虚拟机就会自然退出。
+ * 注意：
+ * 调用 setDaemon(boolean on)设置守护线程要在线程启动前，否则会抛出异常。java.lang.IllegalThreadStateException
+ * 守护线程在退出的时候并不会执行 finnaly 块中的代码，所以将释放资源等操作不要放在 finnaly 块中执行，这种操作是不安全的。
  * @author: yangtianzeng
  * @date: 2020/3/28 20:33
  */
@@ -48,32 +49,32 @@ public class ThreadDaemon {
     }
 }
 
-    class MyCommon extends Thread {
-        @Override
-        public void run() {
-            for (int i = 0; i < 5; i++) {
-                System.out.println("线程1第" + i + "次执行！");
-                try {
-                    Thread.sleep(7);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+class MyCommon extends Thread {
+    @Override
+    public void run() {
+        for (int i = 0; i < 5; i++) {
+            System.out.println("线程1第" + i + "次执行！");
+            try {
+                Thread.sleep(7);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
         }
     }
+}
 
-    class MyDaemon implements Runnable {
-        @Override
-        public void run() {
-            for (long i = 0; i < 9999999L; i++) {
-                System.out.println("后台线程第" + i + "次执行！");
-                try {
-                    Thread.sleep(7);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                } finally {
-                    System.out.println("finally code ...........");
-                }
+class MyDaemon implements Runnable {
+    @Override
+    public void run() {
+        for (long i = 0; i < 9999999L; i++) {
+            System.out.println("后台线程第" + i + "次执行！");
+            try {
+                Thread.sleep(7);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } finally {
+                System.out.println("finally code ...........");
             }
         }
     }
+}

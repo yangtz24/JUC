@@ -80,6 +80,7 @@ class ThreadPool {
 
     /**
      * 执行任务
+     *
      * @param task
      */
     public void execute(Runnable task) {
@@ -138,6 +139,7 @@ class ThreadPool {
 
 /**
  * 自定义阻塞队列
+ *
  * @param <T>
  */
 class BlockingQueue<T> {
@@ -172,6 +174,7 @@ class BlockingQueue<T> {
 
     /**
      * 阻塞获取
+     *
      * @return
      */
     public T take() {
@@ -195,8 +198,9 @@ class BlockingQueue<T> {
 
     /**
      * 获取 带超时时间
-     * @param timeOut  超时时间
-     * @param unit  单位
+     *
+     * @param timeOut 超时时间
+     * @param unit    单位
      * @return
      */
     public T poll(long timeOut, TimeUnit unit) {
@@ -226,6 +230,7 @@ class BlockingQueue<T> {
 
     /**
      * 阻塞添加
+     *
      * @param element
      */
     public void put(T element) {
@@ -248,9 +253,10 @@ class BlockingQueue<T> {
 
     /**
      * 超时添加
-     * @param task 任务
+     *
+     * @param task    任务
      * @param timeOut 超时时间
-     * @param unit 时间单位
+     * @param unit    时间单位
      * @return
      */
     public boolean offer(T task, long timeOut, TimeUnit unit) {
@@ -278,6 +284,7 @@ class BlockingQueue<T> {
 
     /**
      * 获取队列大小
+     *
      * @return
      */
     public int size() {
@@ -309,12 +316,14 @@ class BlockingQueue<T> {
 
 /**
  * 拒绝策略
+ *
  * @param <T>
  */
 @FunctionalInterface
 interface RejectPolicy<T> {
     /**
      * 拒绝策略
+     *
      * @param queue
      * @param task
      */

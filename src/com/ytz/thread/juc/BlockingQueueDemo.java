@@ -6,16 +6,16 @@ import java.util.concurrent.BlockingQueue;
 /**
  * @ClassName: BlockingQueueDemo
  * @Description: 阻塞队列
- *                      当队列中是空时，获取元素会被阻塞
- *                      当队列中是满时，添加元素会被阻塞
- *               BlockingQueue实现类：
- *                     ArrayBlockingQueue:由数组构成的有界阻塞队列
- *                     LinkedBlockingQueue:由链表构成的有界阻塞队列（默认值大小：Integer.MAX_VALUE）
- *
- *               方法类型    抛出异常            特殊值(true/false)           阻塞              超时
- *                插入       add(e)            offer(e)                   put(e)        offer(e,time,unit)
- *                移除       remove()          poll()                     take()         poll(time,unit)
- *                检查       element()         peek()                     *               *
+ * 当队列中是空时，获取元素会被阻塞
+ * 当队列中是满时，添加元素会被阻塞
+ * BlockingQueue实现类：
+ * ArrayBlockingQueue:由数组构成的有界阻塞队列
+ * LinkedBlockingQueue:由链表构成的有界阻塞队列（默认值大小：Integer.MAX_VALUE）
+ * <p>
+ * 方法类型    抛出异常            特殊值(true/false)           阻塞              超时
+ * 插入       add(e)            offer(e)                   put(e)        offer(e,time,unit)
+ * 移除       remove()          poll()                     take()         poll(time,unit)
+ * 检查       element()         peek()                     *               *
  * @author: yangtianzeng
  * @date: 2020/4/7 12:09
  */

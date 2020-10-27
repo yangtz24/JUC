@@ -7,8 +7,8 @@ import java.util.concurrent.locks.ReentrantLock;
 /**
  * @ClassName: ThreadOrderAccessDemo
  * @Description: 线程精准调用
- *                  需求：多线程按顺序调用，实现A->B->C
- *                      A打印5次 B打印10次  C打印15次   10轮
+ * 需求：多线程按顺序调用，实现A->B->C
+ * A打印5次 B打印10次  C打印15次   10轮
  * @author: yangtianzeng
  * @date: 2020/4/7 8:49
  */
@@ -34,7 +34,7 @@ public class ThreadOrderAccessDemo {
     }
 }
 
-class ShareResource{
+class ShareResource {
     /**
      * A 1
      * B 2
@@ -56,7 +56,7 @@ class ShareResource{
 
             // 业务
             for (int j = 0; j < 5; j++) {
-                System.out.println(Thread.currentThread().getName()+"\t"+j);
+                System.out.println(Thread.currentThread().getName() + "\t" + j);
             }
             // 修改标志位
             num = 2;
@@ -79,7 +79,7 @@ class ShareResource{
 
             // 业务
             for (int j = 0; j < 10; j++) {
-                System.out.println(Thread.currentThread().getName()+"\t"+j);
+                System.out.println(Thread.currentThread().getName() + "\t" + j);
             }
             // 修改标志位
             num = 3;
@@ -102,7 +102,7 @@ class ShareResource{
 
             // 业务
             for (int j = 0; j < 15; j++) {
-                System.out.println(Thread.currentThread().getName()+"\t"+j);
+                System.out.println(Thread.currentThread().getName() + "\t" + j);
             }
             // 修改标志位
             num = 1;

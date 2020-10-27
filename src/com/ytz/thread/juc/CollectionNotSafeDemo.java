@@ -7,19 +7,19 @@ import java.util.concurrent.CopyOnWriteArrayList;
 /**
  * @ClassName: CollectionNotSafeDemo
  * @Description: 集合不安全类
- *                  List   java.util.ConcurrentModificationException
- *                      解决方法：
- *                          1. Vector 不推荐
- *                          2. Collections.synchronizedList(new ArrayList<String>()) 单线程可考虑
- *                          3. CopyOnWriteArrayList<V> 并发性高
- *                  Set   java.util.ConcurrentModificationException
- *                      解决方法：
- *                          1. Collections.synchronizedSet(new HashSet<>())
- *                          2. CopyOnWriteArraySet<>()
- *                  Map  java.util.ConcurrentModificationException
- *                      解决方法：
- *                          1. Collections.synchronizedMap(new HashMap<>())
- *                          2. ConcurrentHashMap<>
+ * List   java.util.ConcurrentModificationException
+ * 解决方法：
+ * 1. Vector 不推荐
+ * 2. Collections.synchronizedList(new ArrayList<String>()) 单线程可考虑
+ * 3. CopyOnWriteArrayList<V> 并发性高
+ * Set   java.util.ConcurrentModificationException
+ * 解决方法：
+ * 1. Collections.synchronizedSet(new HashSet<>())
+ * 2. CopyOnWriteArraySet<>()
+ * Map  java.util.ConcurrentModificationException
+ * 解决方法：
+ * 1. Collections.synchronizedMap(new HashMap<>())
+ * 2. ConcurrentHashMap<>
  * @author: yangtianzeng
  * @date: 2020/4/7 9:06
  */
@@ -52,7 +52,7 @@ public class CollectionNotSafeDemo {
 
         for (int i = 0; i < 30; i++) {
             new Thread(() -> {
-                set.add(UUID.randomUUID().toString().substring(0,8));
+                set.add(UUID.randomUUID().toString().substring(0, 8));
                 System.out.println(set);
             }, String.valueOf(i)).start();
         }
@@ -67,7 +67,7 @@ public class CollectionNotSafeDemo {
 
         for (int i = 0; i < 30; i++) {
             new Thread(() -> {
-                list.add(UUID.randomUUID().toString().substring(0,8));
+                list.add(UUID.randomUUID().toString().substring(0, 8));
                 System.out.println(list);
             }, String.valueOf(i)).start();
         }

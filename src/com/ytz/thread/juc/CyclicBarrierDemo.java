@@ -4,8 +4,8 @@ import java.util.concurrent.*;
 
 /**
  * @ClassName: CyclicBarrierDemo
- * @Description:    CyclicBarrier：它的作用就是会让所有线程都等待完成后才会继续下一步行动
- *                                  可以用于多线程计算数据，最后合并计算结果的场景。
+ * @Description: CyclicBarrier：它的作用就是会让所有线程都等待完成后才会继续下一步行动
+ * 可以用于多线程计算数据，最后合并计算结果的场景。
  * @author: yangtianzeng
  * @date: 2020/4/7 10:43
  */
@@ -17,7 +17,7 @@ public class CyclicBarrierDemo {
     private ExecutorService executorService;
     private CyclicBarrier cyclicBarrier;
     /**
-     *   参与线程的个数
+     * 参与线程的个数
      */
     private int parties;
 
@@ -46,14 +46,12 @@ public class CyclicBarrierDemo {
                 } catch (BrokenBarrierException e) {
                     e.printStackTrace();
                 }
-                System.out.println(Thread.currentThread().getName()+"\t gets job done");
+                System.out.println(Thread.currentThread().getName() + "\t gets job done");
             });
         }
         executorService.shutdown();
 
     }
-
-
 
 
 }

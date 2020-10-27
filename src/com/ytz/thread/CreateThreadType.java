@@ -3,12 +3,12 @@ package com.ytz.thread;
 /**
  * @ClassName: CreateThreadType
  * @Description: 创建线程的方式
- *                  继承 Thread 类、实现 Runable 接口。
- *                  Thread init()方法
- *                      1.新构造的线程对象是由其 parent 线程来进行空间分配的。
- *                      2.新线程继承了 parent 线程的 group、是否为 Daemon、优先级 priority、加载资源的 contextClassLoader、
- *                          可继承的 ThreadLocal。
- *                      3.parent 线程会分配一个唯一的 ID 来标识这个 child 新线程。
+ * 继承 Thread 类、实现 Runable 接口。
+ * Thread init()方法
+ * 1.新构造的线程对象是由其 parent 线程来进行空间分配的。
+ * 2.新线程继承了 parent 线程的 group、是否为 Daemon、优先级 priority、加载资源的 contextClassLoader、
+ * 可继承的 ThreadLocal。
+ * 3.parent 线程会分配一个唯一的 ID 来标识这个 child 新线程。
  * @author: yangtianzeng
  * @date: 2020/3/28 14:47
  */
@@ -37,7 +37,7 @@ class MyThread extends Thread {
 }
 
 //实现Runnable接口
-class MyThread2 implements Runnable{
+class MyThread2 implements Runnable {
 
     @Override
     public void run() {

@@ -7,11 +7,10 @@ import java.util.concurrent.FutureTask;
 /**
  * @ClassName: CallableDemo
  * @Description: 线程的第三种实现方法
- *                               Callable       与         Runnable区别
- *                     返回值       有，类型根据泛型而定           无
- *                     方法名       call()                     run()
- *                     异常        方法抛出异常                  不抛出异常
- *
+ * Callable       与         Runnable区别
+ * 返回值       有，类型根据泛型而定           无
+ * 方法名       call()                     run()
+ * 异常        方法抛出异常                  不抛出异常
  * @author: yangtianzeng
  * @date: 2020/4/7 9:57
  */

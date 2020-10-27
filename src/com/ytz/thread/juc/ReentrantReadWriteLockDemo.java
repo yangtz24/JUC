@@ -8,7 +8,7 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 /**
  * @ClassName: ReentrantReadWriteLockDemo
  * @Description: 读写锁
- *                  读写锁允许共享资源在同一时刻可以被多个读线程访问，但是在写线程访问时，所有的读线程和其他的写线程都会被阻塞。
+ * 读写锁允许共享资源在同一时刻可以被多个读线程访问，但是在写线程访问时，所有的读线程和其他的写线程都会被阻塞。
  * @author: yangtianzeng
  * @date: 2020/4/5 10:27
  */
@@ -46,6 +46,7 @@ class Data {
 
     /**
      * 写入数据
+     *
      * @param data
      */
     public void put(Object data) {
